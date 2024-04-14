@@ -1,0 +1,282 @@
+/* ================================================= */
+/*    Colors. 
+/* ================================================= */
+:root {
+	/* Darker Colors */
+	--gray-shade-60: #181d13;
+	--green-tint-30: #14b26b;
+	--gray-tint-50: #909298;
+	--green-tint-80: #14b26b;
+	--gray-base: #202430; 
+	--gray-alpha-80: rgb(32 36 48 / .8);
+	/* Clear Colors */
+	--gray-tint-90: #E9E9EA;
+
+	--white-base: #fff;
+	--primary-base: #358FE6;
+
+	--extras-sun: #FFD371;
+	--extras-moon: #7190FF;
+	--extras-black-alpha-64: rgb(0 0 0 / .64);
+	--extras-white-alpha-64: rgb(255 255 255 / .64);
+}
+/* Section of color for the dark theme */
+:root[data-theme="dark"] {
+	--main-header-bg: var(--gray-shade-60);
+	--top-bar-icon-fill: var(--green-tint-80);
+	--sidebar-bg: var(--gray-base);
+	--sidebar-icon-fill: var(--gray-tint-50);
+	--sidebar-icon-active-fill: var(--white-base);
+	--sidebar-link-color: var(--gray-tint-50);
+	--sidebar-link-active-color: var(--white-base);
+	--sidebar-menu-heading-color: var(--green-tint-30);
+	--theme-switcher-bg: var(--gray-shade-60);
+	--theme-switcher-indicator: var(--extras-moon);
+	--theme-switcher-indicator-pos: 3.25rem;
+	--sun-icon-fill: var(--green-tint-30);
+	--moon-icon-fill: var(--extras-white-alpha-64);
+	--main-header-link-color: var(--green-tint-80);
+}
+/* Section of color for the white theme */
+:root[data-theme="light"] {
+	--main-header-bg: var(--green-tint-80);
+	--top-bar-icon-fill: var(--gray-base);
+	--sidebar-bg: var(--gray-tint-90);
+	--sidebar-icon-fill: var(--gray-tint-50);
+	--sidebar-icon-active-fill: var(--gray-base);
+	--sidebar-link-color: var(--gray-tint-50);
+	--sidebar-link-active-color: var(--gray-base);
+	--sidebar-menu-heading-color: var(--gray-tint-50);
+	--theme-switcher-bg: var(--gray-tint-80);
+	--theme-switcher-indicator: var(--extras-sun);
+	--theme-switcher-indicator-pos: .25rem;
+	--sun-icon-fill: var(--extras-black-alpha-64);
+	--moon-icon-fill: var(--gray-tint-50);
+	--main-header-link-color: var(--gray-base);
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+ 
+}
+/* ================================================= */
+/* The Main header 
+/* ================================================= */
+#main-header {
+	background-color: var(--main-header-bg);
+	padding: 20px 50px;
+}
+
+#main-header nav,
+#main-header ul,
+#main-header a {
+	display: flex;
+	align-items: center;
+}
+
+#main-header nav {
+	justify-content: space-between;
+}
+
+#main-header nav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	gap: 2rem;
+}
+#main-header__sidebar-toggle {
+	appearance: none;
+	background-color: transparent;
+	border: none;
+}
+
+/* ================================================= */
+/* Sidebar 
+/* ================================================= */
+#sidebar {
+	background-color: var(--sidebar-bg);
+	padding: 1.5rem 0 1.5rem 1.5rem;
+	position: absolute;
+	top: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 4rem;
+	min-height: 100%;
+	align-items: flex-start;
+	transform: translate3d(-100%, 0, 0);
+	transition: transform .4s ease-in-out, background-color .4s ease-in-out;
+}
+
+#sidebar svg {
+	width: 1.25rem;
+	height: 1.25rem;
+	fill: var(--sidebar-icon-fill);
+}
+
+#sidebar__collapse {
+	display: none;
+}
+
+#sidebar__nav ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+#sidebar__nav ul a {
+	display: flex;
+	padding: .75rem 0;
+	gap: .75rem;
+	align-items: center;
+	text-decoration: none;
+	color: var(--sidebar-link-color);
+	padding-right: 3rem;
+	transition: color .3s ease-in-out;
+}
+
+#sidebar__nav ul a.active {
+	color: var(--sidebar-link-active-color);
+}
+
+#sidebar__nav ul a.active svg {
+	fill: var(--sidebar-icon-active-fill);
+}
+
+#sidebar__nav ul a:hover {
+	color: var(--sidebar-link-active-color);
+}
+
+
+.menu-heading {
+	color: var(--sidebar-menu-heading-color);
+	font-size: 81.25%;
+	text-transform: uppercase;
+	font-weight: 700;
+	letter-spacing: 1px;
+	padding: .75rem 0;
+}
+
+#sidebar__theme-switcher {
+	background-color: var(--theme-switcher-bg);
+	border-radius: 50px;
+	display: flex;
+	align-items: center;
+	padding: 15px;
+	gap: 1.75rem;
+	position: relative;
+	cursor: pointer;
+	transition: background-color .4s ease-in-out;
+}
+
+#sidebar__theme-switcher::before {
+	content: '';
+	position: absolute;
+	width: 3rem;
+	height: 3rem;
+	background-color: var(--theme-switcher-indicator);
+	border-radius: 50px;
+	z-index: 0;
+	left: 0;
+	transform: translateX(var(--theme-switcher-indicator-pos));
+	transition: transform .4s ease-in-out;
+}
+
+#overlay {
+	position: absolute;
+	inset: 0;
+	background-color: var(--gray-alpha-80);
+	opacity: 0;
+	transition: opacity .4s ease-in-out, visibility .4s ease-in-out;
+	overflow: hidden;
+	visibility: hidden;
+}
+
+body.sidebar-open #overlay {
+	opacity: 1;
+	visibility: visible;
+}
+
+body.sidebar-open #sidebar {
+	transform: translate3d(0, 0, 0);
+}
+#main-header__sidebar-toggle {
+	display: none;
+}
+
+#main-header__logo {
+	display: block;
+}
+
+#main-header svg {
+	width: 1.25rem;
+	height: 1.25rem;
+}
+
+
+#main-header a {
+	text-decoration: none;
+}
+
+#main-header a span {
+	display: inline-block;
+	font-size: 81.25%;
+	color: var(--main-header-link-color);
+	transition: color .4s ease-in-out;
+}
+
+#main-header a {
+	gap: .5rem;
+}
+
+#sidebar {
+	position: relative;
+	transform: none;
+}
+
+#main {
+	display: grid;
+	grid-template-columns: auto 1fr;
+}
+
+#sidebar__collapse {
+	display: flex;
+	align-items: center;
+	gap: .75rem;
+	padding: .75rem 0;
+	appearance: none;
+	background: transparent;
+	border: none;
+	font-size: 81.25%;
+	color: var(--primary-base);
+	cursor: pointer;
+}
+
+#sidebar__collapse svg {
+	fill: var(--primary-base);
+}
+
+body.sidebar-collapsed .menu-heading,
+body.sidebar-collapsed #sidebar span {
+	display: none;
+}
+
+body.sidebar-collapsed #sidebar__theme-switcher {
+	display: none;
+}
+
+body.sidebar-collapsed #sidebar {
+	padding-right: 1.5rem;
+}
+
+body.sidebar-collapsed #sidebar a,
+body.sidebar-collapsed #sidebar__collapse {
+	width: 2.75rem;
+	padding-right: 0;
+	justify-content: center;
+}
+
+body.sidebar-collapsed #sidebar svg {
+	width: 1.25rem;
+	height: 1.25rem;
+}

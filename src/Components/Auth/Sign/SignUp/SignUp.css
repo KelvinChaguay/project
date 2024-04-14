@@ -1,0 +1,183 @@
+/**********************************COLOR****************************
+***********************************************************************/
+:root { 
+    /* Darker Colors */
+    --gray-shade-60: #181d13;
+    --green-tint-30: #14b26b;
+    --gray-tint-50: #909298;
+    --green-tint-80: #14b26b;
+    --gray-base: #202430;
+    --gray-alpha-80: rgb(32 36 48 / .8);
+    --gray-purple: #6364ff;
+    /* Clear Colors */
+    --gray-tint-90: #E9E9EA;
+  
+    --white-base: #fff;
+    --primary-base: #358FE6;
+  
+    --extras-sun: #FFD371;
+    --extras-moon: #7190FF;
+    --extras-black-alpha-64: rgb(0 0 0 / .64);
+    --extras-white-alpha-64: rgb(255 255 255 / .64);
+  }
+  
+  /* Section of color for the dark theme */
+  :root[data-theme="dark"] {
+    --main-header-bg: var(--gray-shade-60);
+    --top-bar-icon-fill: var(--green-tint-80);
+    --sidebar-bg: var(--gray-base);
+    --sidebar-icon-fill: var(--gray-tint-50);
+    --sidebar-icon-active-fill: var(--white-base);
+    --sidebar-link-color: var(--gray-tint-50);
+    --sidebar-link-active-color: var(--white-base);
+    --sidebar-menu-heading-color: var(--green-tint-30);
+    --theme-switcher-bg: var(--gray-shade-60);
+    --theme-switcher-indicator: var(--extras-moon);
+    --theme-switcher-indicator-pos: 3.25rem;
+    --sun-icon-fill: var(--green-tint-30);
+    --moon-icon-fill: var(--extras-white-alpha-64);
+    --main-header-link-color: var(--green-tint-80);
+  }
+  
+  /* Section of color for the white theme */
+  :root[data-theme="light"] {
+    --main-header-bg: var(--green-tint-80);
+    --top-bar-icon-fill: var(--gray-base);
+    --sidebar-bg: var(--gray-tint-90);
+    --sidebar-icon-fill: var(--gray-tint-50);
+    --sidebar-icon-active-fill: var(--gray-base);
+    --sidebar-link-color: var(--gray-tint-50);
+    --sidebar-link-active-color: var(--gray-base);
+    --sidebar-menu-heading-color: var(--gray-tint-50);
+    --theme-switcher-bg: var(--gray-tint-80);
+    --theme-switcher-indicator: var(--extras-sun);
+    --theme-switcher-indicator-pos: .25rem;
+    --sun-icon-fill: var(--extras-black-alpha-64);
+    --moon-icon-fill: var(--gray-tint-50);
+    --main-header-link-color: var(--gray-base);
+  }
+  
+  /**********************************BASE-CONTENT****************************
+  ***********************************************************************/
+  
+  * {
+    background-color: var(--gray-base);
+  }
+  
+  .container-alt-login {
+    margin: 0 auto;
+    max-width: 500px;
+  }
+  
+  /*********************************CONTENT-SECTION****************************
+  ***********************************************************************/
+  
+  .logo-container-login {
+    color: var(--green-tint-80);
+    text-align: center;
+  
+  }
+  
+  .form-container-login {
+    margin: 50px auto;
+    max-width: 450px;
+    padding: 20px 20px 50px;
+    border-radius: 10px;
+  
+  }
+  
+  .fields-group-login {
+    margin-bottom: 10px;
+  
+  }
+  /*********************************ABOUT-SECTION****************************
+  ***********************************************************************/
+  .container-about-sigup{
+    display: flex;
+    justify-content:left;
+    margin-top: 30px;
+    color: var(--white-base);
+  
+  }
+  
+  /*********************************INPUT-SECTION****************************
+  ***********************************************************************/
+  
+  .input-email-sigup {
+    background: #131419;
+    border: 1px solid #0a0b0e;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: #fff;
+    display: block;
+    font-family: inherit;
+    font-size: 16px;
+    outline: 0;
+    padding: 10px;
+    resize: vertical;
+    width: 100%;
+  
+  }
+
+  .input-require-sigup{
+    color: var(--white-base);
+  }
+  
+  .email-login {
+    color: var(--white-base);
+  }
+  
+  .button-login {
+    border: 0;
+    color: var(--white-base);
+    cursor: pointer;
+    font-size: 18px;
+    outline: 0;
+    padding: 10px;
+    text-transform: uppercase;
+    width: 100%;
+    text-decoration: none;
+    background-color: var(--green-tint-80);
+  }
+  /*********************************FOOTER-SECTION****************************
+  ***********************************************************************/
+  
+  .form-footer-login {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    color: var(--white-base);
+  }
+  
+  .no-list-login li a {
+    display: flex;
+    padding-top: 5px;
+    text-decoration: none;
+    color: var(--white-base);
+  
+  }
+  ul {
+    list-style-type: none;
+  }
+
+  .checkbox{
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+    cursor:pointer;
+    display: flex;
+  }
+  .checkbox-req{
+    word-wrap: break-word;
+    color: #fff;
+    display: block;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px ;
+    padding:10px;
+    
+  }
